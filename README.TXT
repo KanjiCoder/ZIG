@@ -5,5 +5,6 @@
 	Postgres - Will be our database.
 
 
-	@AC@ : All Commands ( AC.SH Runs All The Commands You )
-		                ( Typically Type Out In GitBash   )
+	@AC@ : All Commands ? ( AC.SH Runs All The Commands You )
+		                  ( Typically Type Out In GitBash   )
+    @AC@ : Auto_Commit <<<<< What it really stands for.
