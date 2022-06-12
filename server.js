@@ -46,6 +46,17 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 
 	//:TOP_LEVEL_URL_ROUTING:----------------------------://
 	
+	if( "TXT" == sob.url_seg[ 0 ] ){
+
+		var rfp = "." ;  
+		var m_i =( sob.url_seg.length - 1 );
+		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
+
+			rfp += ( "/" + sob.url_seg[ s_i ] );
+		};;
+
+		ZIG_ServeFile_TXT( sob , rfp );
+	}else
 	if( "J_S" == sob.url_seg[ 0 ] ){
 
 		var rfp = "." ;  
@@ -56,7 +67,6 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 		};;
 
 		ZIG_ServeFile_J_S( sob , rfp );
-
 	}else
 	if( "IMG" == sob.url_seg[ 0 ] ){
 
