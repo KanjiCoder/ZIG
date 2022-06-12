@@ -27,6 +27,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
               .toUpperCase()
     ,   pam : LIB_QS.parse( i_ask.url , true ).query  
 
+	,   rfp     :   "[RELATIVE_FILEPATH_NOT_LOADED]"
 	,   url_seg : [ "[URL_PATH_SEGMENTS_NOT_LOADED]" ]
     };;
 
@@ -44,9 +45,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	url_seg = sob.url.split( "/" ).filter( n => n );
 	sob.url_seg = url_seg ;
 
-	//:TOP_LEVEL_URL_ROUTING:----------------------------://
-	
-	if( "TXT" == sob.url_seg[ 0 ] ){
+	//:LOAD_RELATIVE_FILE_PATH(rfp):---------------------://
 
 		var rfp = "." ;  
 		var m_i =( sob.url_seg.length - 1 );
@@ -54,8 +53,15 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 
 			rfp += ( "/" + sob.url_seg[ s_i ] );
 		};;
+		sob.rfp =( rfp );
+	//:---------------------::LOAD_RELATIVE_FILE_PATH(rfp)//
 
-		ZIG_ServeFile_TXT( sob , rfp );
+
+	//:TOP_LEVEL_URL_ROUTING:----------------------------://
+	
+	if( "TXT" == sob.url_seg[ 0 ] ){
+
+		ZIG_ServeFile_TXT( sob , sob.rfp );
 	}else
 	if( "J_S" == sob.url_seg[ 0 ] ){
 
