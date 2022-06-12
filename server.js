@@ -101,9 +101,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	}else
     if( "/SERVEFILE" == sob.url ){
 
-        //:Serve Ourselves://
         ZIG_ServeFile_TXT( sob , "./server.js" );
-
     }else
 	if( "/ORIGINAL_DEFAULT" == sob.url ){
         sob.giv.writeHead( 200 , TXT );
@@ -186,7 +184,7 @@ function ZIG_ServeFile_PNG( sob , rfp_png , o_depth ){
 				o_depth++;
 				ZIG_ServeFile_PNG(
 					sob 
-				,   "./IMG/404.PNG" 
+				,   "./PNG/404.PNG" 
 				,   o_depth
 				);;
 			}else{
