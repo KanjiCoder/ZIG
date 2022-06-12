@@ -234,7 +234,7 @@ function ZIG_ServeFile_J_S( sob , rfp_j_s , o_depth ){
     "use strict"
 
         if(obj_err){
-            cof = "[WE_DONE_FUCKED_UP_2022:J_S]" ;
+            cof ="console.log('[FAILED_TO_FIND_JS_FILE]');";
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
