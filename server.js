@@ -55,8 +55,6 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 		};;
 		sob.rfp =( rfp );
 	//:---------------------::LOAD_RELATIVE_FILE_PATH(rfp)//
-
-
 	//:TOP_LEVEL_URL_ROUTING:----------------------------://
 	
 	if( "TXT" == sob.url_seg[ 0 ] ){
@@ -65,14 +63,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	}else
 	if( "J_S" == sob.url_seg[ 0 ] ){
 
-		var rfp = "." ;  
-		var m_i =( sob.url_seg.length - 1 );
-		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
-
-			rfp += ( "/" + sob.url_seg[ s_i ] );
-		};;
-
-		ZIG_ServeFile_J_S( sob , rfp );
+		ZIG_ServeFile_J_S( sob , sob.rfp );
 	}else
 	if( "IMG" == sob.url_seg[ 0 ] ){
 
@@ -82,52 +73,19 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	}else
 	if( "PNG" == sob.url_seg[ 0 ] ){
 
-		//:----------------------------------------------://
-		//: All Images In "PNG" Folder. @K_I_S_S@        ://
-		//:----------------------------------------------://
-
-		var rfp = "." ;  
-		var m_i =( sob.url_seg.length - 1 );
-		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
-
-			rfp += ( "/" + sob.url_seg[ s_i ] );
-		};;
-
-		ZIG_ServeFile_PNG( sob , rfp );
-
+		ZIG_ServeFile_PNG( sob , sob.rfp );
 	}else
 	if( "HTM" == sob.url_seg[ 0 ] ){
 
-		var rfp = "." ;  
-		var m_i =( sob.url_seg.length - 1 );
-		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
-
-			rfp += ( "/" + sob.url_seg[ s_i ] );
-		};;
-
-		ZIG_ServeFile_HTM( sob , rfp );
+		ZIG_ServeFile_HTM( sob , sob.rfp );
 	}else
     if( "CSS" == sob.url_seg[ 0 ] ){
 
-		var rfp = "." ;  
-		var m_i =( sob.url_seg.length - 1 );
-		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
-
-			rfp += ( "/" + sob.url_seg[ s_i ] );
-		};;
-
-		ZIG_ServeFile_CSS( sob , rfp );
+		ZIG_ServeFile_CSS( sob , sob.rfp );
     }else
     if( "EXE" == sob.url_seg[ 0 ] ){
 
-		var rfp = "." ; 
-		var m_i =( sob.url_seg.length - 1 );
-		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
-
-			rfp += ( "/" + sob.url_seg[ s_i ] );
-		};;
-
-		ZIG_ServeFile_EXE( sob , rfp );
+		ZIG_ServeFile_EXE( sob , sob.rfp );
     }else
 	if( "/URL_SEG"   == sob.url ){
 
