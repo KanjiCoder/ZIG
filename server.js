@@ -87,7 +87,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 
 		ZIG_ServeFile_EXE( sob , sob.rfp );
     }else
-	if( "/DEBUG_URL_SEG"   == sob.url ){
+	if( "DEBUG_URL_SEG"   == sob.url_seg[ 0 ] ){
 
 		sob.giv.writeHead( 200 );
 		sob.giv.write( "[url_seg]..." );
@@ -99,11 +99,11 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 
 		sob.giv.end( );
 	}else
-    if( "/DEBUG_SERVEFILE" == sob.url ){
+    if( "DEBUG_SERVEFILE" == sob.url_seg[ 0 ] ){
 
         ZIG_ServeFile_TXT( sob , "./server.js" );
     }else
-	if( "/DEBUG_URL" == sob.url ){
+	if( "DEBUG_URL" == sob.url_seg[ 0 ] ){
         sob.giv.writeHead( 200 , TXT );
 
         sob.giv.write( "[sob.url]:" +         sob.url   );
