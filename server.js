@@ -43,6 +43,8 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	var url_seg = [ ];
 	url_seg = sob.url.split( "/" ).filter( n => n );
 	sob.url_seg = url_seg ;
+
+	//:TOP_LEVEL_URL_ROUTING:----------------------------://
 	
 	if( "J_S" == sob.url_seg[ 0 ] ){
 
@@ -151,12 +153,15 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 		
         sob.giv.end( );
     }else{
+
 		//:----------------------------------------------://
-		//: Default Behavior is to serve up the          ://
-		//: kyootbot application page.                   ://
+		//: Default Behavior : Serve Game Page :---------://
 		//:----------------------------------------------://
-		ZIG_ServeFile_HTM( sob , "./HTM/K_B.HTM" );
+	
+		ZIG_ServeFile_HTM( sob , "./HTM/ZIG.HTM" );
 	};;
+
+	//:----------------------------:TOP_LEVEL_URL_ROUTING://
    
 }).listen(PORT);                                 
 
