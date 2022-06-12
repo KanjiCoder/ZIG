@@ -60,7 +60,11 @@ const ZIG_DOM = function PRIVATE_ZIG_DOM(){
 
 const ZIG_INI = function PRIVATE_ZIG_INI(){
 
-	ZIG_DOM();
+	$(document).ready( function CALBACK_ZIG_INI(){
+
+		ZIG_DOM();
+
+	});;
 };;
 const ZIG_KIL = function PRIVATE_ZIG_KIL(){
 
