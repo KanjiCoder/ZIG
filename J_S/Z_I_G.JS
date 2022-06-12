@@ -37,7 +37,8 @@ const ZIG_DOM = function PRIVATE_ZIG_DOM(){
 
     if( bod_htm === htm_htm ){ alert("[THEY_ARE_SAME]"); };
 
-    $( document ).prop( "title" , "[Don't Sue Me KyootBot]" );
+    $( document ).prop( "title" , "[Atomic_Alice_Online]" );
+                                //: A______A_____O_______://
     
     var htm_j_q =$( htm_htm );
     var bod_j_q =$( bod_htm );
