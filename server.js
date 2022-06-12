@@ -58,9 +58,14 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	}else
 	if( "IMG" == sob.url_seg[ 0 ] ){
 
+		sob.giv.writeHead( 200 );
+		sob.giv.write( "[NO_IMAGE_FOLDER_USE:PNG]" );
+		sob.giv.end( );
+	}else
+	if( "PNG" == sob.url_seg[ 0 ] ){
+
 		//:----------------------------------------------://
-		//: All Images Will Go Into The "IMG" Folder     ://
-		//: ZERO ACCEPTIONS. KEEP SHIT SIMPLE STUPID!    ://
+		//: All Images In "PNG" Folder. @K_I_S_S@        ://
 		//:----------------------------------------------://
 
 		var rfp = "." ;  
@@ -75,7 +80,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	}else
 	if( "HTM" == sob.url_seg[ 0 ] ){
 
-		var rfp = "." ; //:@rfp@:RelativeFilePath://
+		var rfp = "." ;  
 		var m_i =( sob.url_seg.length - 1 );
 		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
 
@@ -86,7 +91,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 	}else
     if( "CSS" == sob.url_seg[ 0 ] ){
 
-		var rfp = "." ; //:@rfp@:RelativeFilePath://
+		var rfp = "." ;  
 		var m_i =( sob.url_seg.length - 1 );
 		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
 
@@ -348,6 +353,8 @@ function OKB_ServeFile_TXT( sob , rfp_txt ){
 
     @obj_err@ : Object_Error
 	@o_depth@ : Optional Depth Value
+
+	@K_I_S_S@ : Keep_It_Simple_Stupid
 
 
 *** ************************ COMMENTS_ARE_READ_LAST_OR_NEVER ***
