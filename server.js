@@ -91,12 +91,14 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 
 		sob.giv.writeHead( 200 );
 		sob.giv.write( "[url_seg]..." );
+		sob.giv.write( "(" );
 		var m_i =( url_seg.length - 1 );
 		for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
 
 			sob.giv.write( sob.url_seg[ s_i ] );
+			if( m_i != s_i ){ sob.giv.write( "+" ); };
 		};;
-
+		sob.giv.write( ")" );
 		sob.giv.end( );
 	}else
     if( "DEBUG_SERVEFILE" == sob.url_seg[ 0 ] ){
