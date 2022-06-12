@@ -1,4 +1,15 @@
-
+//:ABOUT_ZIG_SERVER:=========================================://
+//:                                                          ://
+//:	   Node.js server for JavaScript version of              ://
+//:    Atomic Alice re-write. ZIG == Zero_IDE_Game           ://
+//:    But we can make up some type of lie that makes        ://
+//:    the acronym sound cooler later.                       ://
+//:    ( "AA3" namespace is reserved for the C version )     ://
+//:    ( of the game and thought "ZIG" was nice.       )     ://
+//:                                                          ://
+//:    What I am working towards[ imgur.com/gallery/HhDLFQE ]://
+//:                                                          ://
+//:=========================================:ABOUT_ZIG_SERVER://
 //:DATA_SECTION:=============================================://
 
 const PORT     = process.env.PORT || 5000 ;         
@@ -15,25 +26,24 @@ const EXE = { "Content-Type": "application/x-msdownload" } ;
 const CSS = { "Content-Type": "text/css"                 } ;
 
 //:=============================================:DATA_SECTION://
-//:FUNC_SECTION:=============================================://
+//:FUNC_SECTION_MAIN_ENTRY_POINT:============================://
           
 LIB_HTTP.createServer(function ( i_ask, i_giv ) { 
-    console.log('ask ', i_ask.url);    
 
-    var sob ={
-        ask : i_ask //: Request  ://
-    ,   giv : i_giv //: Response ://
-    ,   url : LIB_URL.parse( i_ask.url , true ).pathname
-              .toUpperCase()
-    ,   pam : LIB_QS.parse( i_ask.url , true ).query  
+	//:BUILD_STATE_OBJECT_BUNDLE(sob):-------------------://
 
-	,   rfp     :   "[RELATIVE_FILEPATH_NOT_LOADED]"
-	,   url_seg : [ "[URL_PATH_SEGMENTS_NOT_LOADED]" ]
-    };;
+		var sob ={
+			ask : i_ask //: Request  ://
+		,   giv : i_giv //: Response ://
+		,   url : LIB_URL.parse( i_ask.url , true ).pathname
+				  .toUpperCase()
+		,   pam : LIB_QS.parse( i_ask.url , true ).query  
 
-	//:-------------------------------------------://
-    //: Create Parameter Dictionary If Not Exists ://
-	//:-------------------------------------------://
+		,   rfp     :   "[RELATIVE_FILEPATH_NOT_LOADED]"
+		,   url_seg : [ "[URL_PATH_SEGMENTS_NOT_LOADED]" ]
+		};;
+	//:-------------------:BUILD_STATE_OBJECT_BUNDLE(sob)://
+	//:CREATE_PARAMDICT_IF_NOT_EXIST:--------------------://
 
     sob.pam = sob.pam ? sob.pam : { };
     sob.pam[ "default_key" ]=( "default_value" );
@@ -41,10 +51,14 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
     console.log( "[LOG:sob.url]:" , sob.url );
     console.log( "[LOG:sob.pam]:" , sob.pam );
 
-	var url_seg = [ ];
-	url_seg = sob.url.split( "/" ).filter( n => n );
-	sob.url_seg = url_seg ;
+	//:--------------------:CREATE_PARAMDICT_IF_NOT_EXIST://
+	//:BUILD_URL_SEGMENTS_ARRAY:-------------------------://
 
+		var url_seg = [ ];
+		url_seg = sob.url.split( "/" ).filter( n => n );
+		sob.url_seg = url_seg ;
+
+	//:-------------------------:BUILD_URL_SEGMENTS_ARRAY://
 	//:LOAD_RELATIVE_FILE_PATH(rfp):---------------------://
 
 		var rfp = "." ;  
@@ -137,26 +151,10 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 
 	//:----------------------------:TOP_LEVEL_URL_ROUTING://
    
-}).listen(PORT);                                 
+}).listen(PORT);   
 
-function ZIG_DictionaryToString( pam ){
-
-    var pam_str="[pam_str]:" ;
-    
-    if( pam ){
-        var arr_k_v=( Object.entries( pam ) );
-            
-        for( var k_v of arr_k_v ){
-        
-            pam_str +=( "[k_v[0]]:" + k_v[ 0 ] );
-            pam_str +=( "[k_v[1]]:" + k_v[ 1 ] );
-        };;
-    }else{
-        pam_str += "[ITS_NULL]" ;
-    };;
-    
-    return( pam_str );
-}
+//:============================:FUNC_SECTION_MAIN_ENTRY_POINT://
+//:FUNC_SECTION_SERVEFILE:===================================://
 
 function ZIG_ServeFile_IMG( sob , rfp_img ){
 
@@ -181,7 +179,7 @@ function ZIG_ServeFile_PNG( sob , rfp_png , o_depth ){
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
-				//: Try To Serve Our 404 Image       ://
+				//: Try_To_Serve_Our[ 404.PNG ]      ://
 				//:----------------------------------://
 				o_depth++;
 				ZIG_ServeFile_PNG(
@@ -212,7 +210,7 @@ function ZIG_ServeFile_J_S( sob , rfp_j_s , o_depth ){
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
-				//: Try To Serve Our 404 .J_S        ://
+				//: Try_To_Serve_Our[ 404.J_S ]      ://
 				//:----------------------------------://
 				o_depth++;
 				ZIG_ServeFile_J_S(
@@ -243,7 +241,7 @@ function ZIG_ServeFile_HTM( sob , rfp_htm , o_depth ){
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
-				//: Try To Serve Our 404 .HTM        ://
+				//: Try_To_Serve_Our[ 404.HTM ]      ://
 				//:----------------------------------://
 				o_depth++;
 				ZIG_ServeFile_HTM(
@@ -274,7 +272,7 @@ function ZIG_ServeFile_CSS( sob , rfp_css , o_depth ){
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
-				//: Try To Serve Our 404 .CSS        ://
+				//: Try_To_Serve_Our[ 404.CSS ]      ://
 				//:----------------------------------://
 				o_depth++;
 				ZIG_ServeFile_CSS(
@@ -311,7 +309,7 @@ function ZIG_ServeFile_TXT( sob , rfp_txt , o_depth ){
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
-				//: Try To Serve Our 404.TXT         ://
+				//: Try_To_Serve_Our[ 404.TXT ]      ://
 				//:----------------------------------://
 				o_depth++;
 				ZIG_ServeFile_TXT(
@@ -329,7 +327,27 @@ function ZIG_ServeFile_TXT( sob , rfp_txt , o_depth ){
         };;
     });;
 }
+//:===================================:FUNC_SECTION_SERVEFILE://
+//:FUNC_SECTION:=============================================://                              
 
+function ZIG_DictionaryToString( pam ){
+
+    var pam_str="[pam_str]:" ;
+    
+    if( pam ){
+        var arr_k_v=( Object.entries( pam ) );
+            
+        for( var k_v of arr_k_v ){
+        
+            pam_str +=( "[k_v[0]]:" + k_v[ 0 ] );
+            pam_str +=( "[k_v[1]]:" + k_v[ 1 ] );
+        };;
+    }else{
+        pam_str += "[ITS_NULL]" ;
+    };;
+    
+    return( pam_str );
+}
 //:=============================================:FUNC_SECTION://
 //: COMMENTS_ARE_READ_LAST_OR_NEVER ************************ ://
 /** !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ************************ ***
@@ -350,7 +368,6 @@ function ZIG_ServeFile_TXT( sob , rfp_txt , o_depth ){
 	@o_depth@ : Optional Depth Value
 
 	@K_I_S_S@ : Keep_It_Simple_Stupid
-
 
 *** ************************ COMMENTS_ARE_READ_LAST_OR_NEVER ***
 *** ************************ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! **/
