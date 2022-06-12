@@ -40,9 +40,18 @@ const ZIG_DOM = function PRIVATE_ZIG_DOM(){
     $( document ).prop( "title" , "[Atomic_Alice_Online]" );
                                 //: A______A_____O_______://
     
-    var htm_j_q =$( htm_htm );
-    var bod_j_q =$( bod_htm );
+    var j_q_htm =$( htm_htm  ); /** <HTML> Root Node **/
+    var j_q_bod =$( bod_htm  ); /** <BODY> ____ Node **/
+	var j_q_can =$("<CANVAS>").attr({
+		width : "100%"
+	,   height: "100%"
+	,  display: "flex"
+	});;
 
+	j_q_bod.append([
+
+			j_q_can
+	]);
 
 	console.log( "[END:ZIG_DOM]" );
 };;
