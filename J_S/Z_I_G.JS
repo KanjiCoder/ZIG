@@ -43,8 +43,8 @@ const ZIG_DOM = function PRIVATE_ZIG_DOM(){
     var j_q_htm =$( htm_htm  ); /** <HTML> Root Node **/
     var j_q_bod =$( bod_htm  ); /** <BODY> ____ Node **/
 	var j_q_can =$("<CANVAS>").attr({
-		width : "100%"
-	,   height: "100%"
+		width : "1024"
+	,   height:  "512"
 	,  display: "flex"
 	});;
 
