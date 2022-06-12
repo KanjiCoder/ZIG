@@ -18,6 +18,14 @@
 
 	console.log( "[HELLO_WORLD_FROM:J_S/Z_I_G.JS]" );
 
+//:ON_WINDOW_RESIZE_HANDLER:=================================://
+
+const ZIG_OWR = function PRIVATE_ZIG_OWR(){
+
+	console.log( "[RESIZED]" );
+
+};;
+//:=================================:ON_WINDOW_RESIZE_HANDLER://
 //:DOMAIN_OBJECT_MODEL_SETUP:================================://
 
 const ZIG_DOM = function PRIVATE_ZIG_DOM(){
@@ -53,6 +61,8 @@ const ZIG_DOM = function PRIVATE_ZIG_DOM(){
 			j_q_can
 	]);
 
+	$(window).resize( ZIG_OWR(); );
+
 	console.log( "[END:ZIG_DOM]" );
 };;
 //:================================:DOMAIN_OBJECT_MODEL_SETUP://
@@ -63,7 +73,7 @@ const ZIG_INI = function PRIVATE_ZIG_INI(){
 	$(document).ready( function CALBACK_ZIG_INI(){
 
 		ZIG_DOM();
-
+		
 	});;
 };;
 const ZIG_KIL = function PRIVATE_ZIG_KIL(){
