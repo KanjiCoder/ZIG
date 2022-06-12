@@ -61,7 +61,7 @@ const ZIG_DOM = function PRIVATE_ZIG_DOM(){
 			j_q_can
 	]);
 
-	$(window).resize( ZIG_OWR(); );
+	$(window).resize( ZIG_OWR );
 
 	console.log( "[END:ZIG_DOM]" );
 };;
