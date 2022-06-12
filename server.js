@@ -53,7 +53,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 			rfp += ( "/" + sob.url_seg[ s_i ] );
 		};;
 
-		OKB_ServeFile_J_S( sob , rfp );
+		ZIG_ServeFile_J_S( sob , rfp );
 
 	}else
 	if( "IMG" == sob.url_seg[ 0 ] ){
@@ -75,7 +75,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 			rfp += ( "/" + sob.url_seg[ s_i ] );
 		};;
 
-		OKB_ServeFile_PNG( sob , rfp );
+		ZIG_ServeFile_PNG( sob , rfp );
 
 	}else
 	if( "HTM" == sob.url_seg[ 0 ] ){
@@ -87,7 +87,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 			rfp += ( "/" + sob.url_seg[ s_i ] );
 		};;
 
-		OKB_ServeFile_HTM( sob , rfp );
+		ZIG_ServeFile_HTM( sob , rfp );
 	}else
     if( "CSS" == sob.url_seg[ 0 ] ){
 
@@ -98,7 +98,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 			rfp += ( "/" + sob.url_seg[ s_i ] );
 		};;
 
-		OKB_ServeFile_CSS( sob , rfp );
+		ZIG_ServeFile_CSS( sob , rfp );
     }else
     if( "EXE" == sob.url_seg[ 0 ] ){
 
@@ -109,7 +109,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 			rfp += ( "/" + sob.url_seg[ s_i ] );
 		};;
 
-		OKB_ServeFile_EXE( sob , rfp );
+		ZIG_ServeFile_EXE( sob , rfp );
     }else
 	if( "/URL_SEG"   == sob.url ){
 
@@ -126,7 +126,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
     if( "/SERVEFILE" == sob.url ){
 
         //:Serve Ourselves://
-        OKB_ServeFile_TXT( sob , "./server.js" );
+        ZIG_ServeFile_TXT( sob , "./server.js" );
 
     }else
 	if( "/ORIGINAL_DEFAULT" == sob.url ){
@@ -136,7 +136,7 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 		sob.giv.write( "\n" );
 
         sob.giv.write( "[sob.pam]:" + 
-            OKB_DictionaryToString( sob.pam ) );
+            ZIG_DictionaryToString( sob.pam ) );
 		sob.giv.write( "\n" );
 
 		//:ADDING THIS == ERROR, why?://
@@ -155,12 +155,12 @@ LIB_HTTP.createServer(function ( i_ask, i_giv ) {
 		//: Default Behavior is to serve up the          ://
 		//: kyootbot application page.                   ://
 		//:----------------------------------------------://
-		OKB_ServeFile_HTM( sob , "./HTM/K_B.HTM" );
+		ZIG_ServeFile_HTM( sob , "./HTM/K_B.HTM" );
 	};;
    
 }).listen(PORT);                                 
 
-function OKB_DictionaryToString( pam ){
+function ZIG_DictionaryToString( pam ){
 
     var pam_str="[pam_str]:" ;
     
@@ -179,18 +179,18 @@ function OKB_DictionaryToString( pam ){
     return( pam_str );
 }
 
-function OKB_ServeFile_IMG( sob , rfp_img ){
+function ZIG_ServeFile_IMG( sob , rfp_img ){
 
 	//:---------------------------------------://
 	//:We are only going to support .PNG files://
 	//:---------------------------------------://
 
 	sob.giv.writeHead( 200 , TXT );
-	sob.giv.write( "[ERR:USE:OKB_ServeFile_PNG]" );
+	sob.giv.write( "[ERR:USE:ZIG_ServeFile_PNG]" );
 	sob.giv.end( );
 }
 
-function OKB_ServeFile_PNG( sob , rfp_png , o_depth ){
+function ZIG_ServeFile_PNG( sob , rfp_png , o_depth ){
 
 	o_depth = ( o_depth ? o_depth : 1 );
 
@@ -205,7 +205,7 @@ function OKB_ServeFile_PNG( sob , rfp_png , o_depth ){
 				//: Try To Serve Our 404 Image       ://
 				//:----------------------------------://
 				o_depth++;
-				OKB_ServeFile_PNG(
+				ZIG_ServeFile_PNG(
 					sob 
 				,   "./IMG/404_512.PNG" 
 				,   o_depth
@@ -221,7 +221,7 @@ function OKB_ServeFile_PNG( sob , rfp_png , o_depth ){
     });;
 }
 
-function OKB_ServeFile_J_S( sob , rfp_j_s , o_depth ){
+function ZIG_ServeFile_J_S( sob , rfp_j_s , o_depth ){
 
 	o_depth = ( o_depth ? o_depth : 1 );
 
@@ -236,7 +236,7 @@ function OKB_ServeFile_J_S( sob , rfp_j_s , o_depth ){
 				//: Try To Serve Our 404 .J_S        ://
 				//:----------------------------------://
 				o_depth++;
-				OKB_ServeFile_J_S(
+				ZIG_ServeFile_J_S(
 					sob 
 				,   "./J_S/404.J_S"
 				,   o_depth
@@ -252,7 +252,7 @@ function OKB_ServeFile_J_S( sob , rfp_j_s , o_depth ){
     });;
 }
 
-function OKB_ServeFile_HTM( sob , rfp_htm , o_depth ){
+function ZIG_ServeFile_HTM( sob , rfp_htm , o_depth ){
 
 	o_depth = ( o_depth ? o_depth : 1 );
 
@@ -260,14 +260,14 @@ function OKB_ServeFile_HTM( sob , rfp_htm , o_depth ){
     "use strict"
 
         if(obj_err){
-            cof = "[WE_DONE_FUCKED_UP_2022_05_25:346AM]" ;
+            cof = "[ServeFile_HTM_FAILURE]" ;
 			if( 1 == o_depth ){
 
 				//:----------------------------------://
 				//: Try To Serve Our 404 .HTM        ://
 				//:----------------------------------://
 				o_depth++;
-				OKB_ServeFile_HTM(
+				ZIG_ServeFile_HTM(
 					sob 
 				,   "./HTM/404.HTM"
 				,   o_depth
@@ -283,7 +283,7 @@ function OKB_ServeFile_HTM( sob , rfp_htm , o_depth ){
     });;
 }
 
-function OKB_ServeFile_CSS( sob , rfp_css , o_depth ){
+function ZIG_ServeFile_CSS( sob , rfp_css , o_depth ){
 
 	o_depth = ( o_depth ? o_depth : 1 );
 
@@ -298,7 +298,7 @@ function OKB_ServeFile_CSS( sob , rfp_css , o_depth ){
 				//: Try To Serve Our 404 .CSS        ://
 				//:----------------------------------://
 				o_depth++;
-				OKB_ServeFile_CSS(
+				ZIG_ServeFile_CSS(
 					sob 
 				,   "./CSS/404.CSS"
 				,   o_depth
@@ -314,13 +314,13 @@ function OKB_ServeFile_CSS( sob , rfp_css , o_depth ){
     });;
 }
 
-function OKB_ServeFile_EXE( sob , rfp_exe  ){
+function ZIG_ServeFile_EXE( sob , rfp_exe  ){
 
     var r_s = LIB_FS.createReadStream( rfp_exe );
     r_s.pipe( sob.giv );
 }
 
-function OKB_ServeFile_TXT( sob , rfp_txt ){
+function ZIG_ServeFile_TXT( sob , rfp_txt ){
 
     LIB_FS.readFile( rfp_txt,function( obj_err , cof ){
     "use strict"
