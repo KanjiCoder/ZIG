@@ -212,7 +212,7 @@ function ZIG_ServeFile_PNG( sob , rfp_png , o_depth ){
 				o_depth++;
 				ZIG_ServeFile_PNG(
 					sob 
-				,   "./IMG/404_512.PNG" 
+				,   "./IMG/404.PNG" 
 				,   o_depth
 				);;
 			}else{
@@ -325,18 +325,34 @@ function ZIG_ServeFile_EXE( sob , rfp_exe  ){
     r_s.pipe( sob.giv );
 }
 
-function ZIG_ServeFile_TXT( sob , rfp_txt ){
+function ZIG_ServeFile_TXT( sob , rfp_txt , o_depth ){
+
+	o_depth = ( o_depth ? o_depth : 1 );
 
     LIB_FS.readFile( rfp_txt,function( obj_err , cof ){
     "use strict"
 
         if(obj_err){
-            cof = "[WE_DONE_FUCKED_UP_2022_05_18]" ;
+            cof = "[ServeFile_TXT_FAILURE]" ;
+			if( 1 == o_depth ){
+
+				//:----------------------------------://
+				//: Try To Serve Our 404.TXT         ://
+				//:----------------------------------://
+				o_depth++;
+				ZIG_ServeFile_TXT(
+					sob 
+				,   "./TXT/404.TXT"
+				,   o_depth
+				);;
+			}else{
+				sob.giv.writeHead( 200 , TXT );
+				sob.giv.end( cof , "utf-8"   );
+			};;
         }else{
             sob.giv.writeHead( 200 , TXT );
+			sob.giv.end( cof , "utf-8"   );
         };;
-
-		sob.giv.end( cof , "utf-8"   );
     });;
 }
 
